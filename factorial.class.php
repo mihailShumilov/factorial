@@ -1,16 +1,26 @@
 <?php
 
     /**
-     * Created by PhpStorm.
-     * User: godson
-     * Date: 3/24/15
-     * Time: 10:04
+     * Class for calculating factorial
+     *
+     * Class factorial
      */
     class factorial
     {
-
+        /**
+         * Variable for contain initial number
+         *
+         * @var int
+         */
         private $base = 0;
 
+        /**
+         * Create factorial object
+         *
+         * @param int $num
+         *
+         * @throws Exception
+         */
         public function __construct( $num )
         {
             if (filter_var( $num, FILTER_VALIDATE_INT ) && $num > 0) {
@@ -20,11 +30,16 @@
             }
         }
 
+        /**
+         * Run calculation
+         *
+         * @param string $formula Calculation algorithm (traditional or stirling)
+         *
+         * @return string
+         */
         public function calculate( $formula = 'traditional' )
         {
-            $value = 1;
             switch ($formula) {
-
                 case 'stirling':
                     $value = $this->calculateStirling();
                     break;
@@ -35,11 +50,23 @@
             return $value;
         }
 
+        /**
+         * Traditional calculation using recursion
+         *
+         * @param int $n
+         *
+         * @return int|string
+         */
         private function calculateTraditional( $n )
         {
             return $n ? bcmul( $n, $this->calculateTraditional( $n - 1 ) ) : 1;
         }
 
+        /**
+         * Calculation by Stirling algorithm https://en.wikipedia.org/wiki/Stirling%27s_approximation
+         *
+         * @return string
+         */
         private function calculateStirling()
         {
             return bcmul( bcmul( sqrt( bcmul( bcmul( 2, M_PI ), $this->base ) ),

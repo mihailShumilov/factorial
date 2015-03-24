@@ -6,7 +6,7 @@
      * Time: 10:12
      */
 
-    require_once( 'factorial.class.php' );
+    require_once( dirname( __FILE__ ) . '/factorial.class.php' );
 
     for ($i = 1; $i <= 1000; $i ++) {
         echo "Calculate factorial for {$i}" . PHP_EOL;
