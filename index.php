@@ -8,7 +8,7 @@
 
     require_once( 'factorial.class.php' );
 
-    for ($i = 0; $i <= 171; $i ++) {
+    for ($i = 1; $i <= 1000; $i ++) {
         echo "Calculate factorial for {$i}" . PHP_EOL;
         $factorial = new factorial( $i );
         echo "Traditional result" . PHP_EOL;
